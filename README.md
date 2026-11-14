@@ -1,8 +1,8 @@
 # user_list_test
 
-A Flutter user list with a repository layer, tested with Riverpod
-`AsyncNotifier` and a hand-written fake repository. No mock library, no code
-generation.
+A Flutter user list built with a feature-first approach and a repository
+layer, tested with Riverpod `AsyncNotifier` and a hand-written fake repository.
+No mock library, no code generation.
 
 ## Features
 
@@ -21,6 +21,8 @@ flowchart LR
 ```
 
 ## Structure
+
+Feature-first: each feature has its own folder, split into layers.
 
 ```
 lib/features/
