@@ -1,7 +1,6 @@
 import 'package:user_list_test/features/user/data/user_repository.dart';
 import 'package:user_list_test/features/user/domain/user.dart';
 
-/// Five users for the tests. No network is used.
 const fakeUsers = [
   User(
     id: 1,
@@ -40,17 +39,11 @@ const fakeUsers = [
   ),
 ];
 
-/// A hand-written fake of [UserRepository]. No mock library, no codegen.
-///
-/// - Give it [users] to make the fetch succeed.
-/// - Give it [error] to make the fetch throw.
 class FakeUserRepository implements UserRepository {
   FakeUserRepository({this.users = const [], this.error});
 
   final List<User> users;
   final Exception? error;
-
-  /// How many times the controller asked for the users.
   int fetchCount = 0;
 
   @override

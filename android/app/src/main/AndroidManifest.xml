@@ -1,5 +1,4 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Release builds need this to call the users API. -->
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:label="user_list_test"

@@ -1,4 +1,3 @@
-/// One user from the dummyjson users API.
 class User {
   const User({
     required this.id,
@@ -26,8 +25,6 @@ class User {
 
   String get fullName => '$firstName $lastName';
 
-  // Two users with the same fields are equal.
-  // Tests need this to compare the users in the state with the fake users.
   @override
   bool operator ==(Object other) {
     return other is User &&

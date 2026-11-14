@@ -8,6 +8,7 @@ repository. No mock library and no code generation.
 
 - Loads users from `https://dummyjson.com/users` and shows them in a list.
 - Shows a spinner while loading, and an error message with a **Try again** button on failure.
+- Has two bottom tabs: **Home** (the user list) and **Profile** (empty for now).
 - The unit tests never call the network. They replace the repository with a fake.
 
 ## How the pieces connect
@@ -29,16 +30,21 @@ Feature-first, with one folder per layer.
 
 ```
 lib/
-  main.dart
-  features/user/
-    domain/user.dart                         # User model
-    data/user_repository.dart                # UserRepository, ApiUserRepository, provider
-    application/user_list_controller.dart    # AsyncNotifier<List<User>>
-    presentation/user_page.dart              # list page
+  main.dart                                  # theme (deep blue) + app start
+  features/
+    home/presentation/home_page.dart         # bottom tabs: Home, Profile
+    profile/presentation/profile_page.dart   # empty page
+    user/
+      domain/user.dart                       # User model
+      data/user_repository.dart              # UserRepository, ApiUserRepository, provider
+      application/user_list_controller.dart  # AsyncNotifier<List<User>>
+      presentation/user_page.dart            # list page
 test/
-  features/user/
-    fake_user_repository.dart                # 5 fake users + FakeUserRepository
-    application/user_list_controller_test.dart
+  features/
+    home/presentation/home_page_test.dart    # widget tests for the tabs
+    user/
+      fake_user_repository.dart              # 5 fake users + FakeUserRepository
+      application/user_list_controller_test.dart
 ```
 
 ## The tests
@@ -49,6 +55,9 @@ test/
 | `fetch users failure` | throws an exception | `AsyncLoading` → `AsyncError` with that exception |
 
 Both tests also check that the repository was called exactly once.
+
+Three widget tests use the same fake: the Home tab shows the 5 users, the
+Profile tab is empty, and the app bar uses the deep blue primary color.
 
 ### The fake
 

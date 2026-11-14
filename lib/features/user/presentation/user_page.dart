@@ -13,11 +13,9 @@ class UserPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Users')),
       body: usersValue.when(
-        // Show the spinner again when the user taps "Try again".
         skipLoadingOnRefresh: false,
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (error, stackTrace) => _UserError(
-          // Invalidate makes the controller run build() again.
           onRetry: () => ref.invalidate(userListControllerProvider),
         ),
         data: (users) => _UserList(users: users),
@@ -38,7 +36,10 @@ class _UserList extends StatelessWidget {
       itemBuilder: (context, index) {
         final user = users[index];
         return ListTile(
-          leading: CircleAvatar(backgroundImage: NetworkImage(user.image)),
+          leading: CircleAvatar(
+            backgroundImage: NetworkImage(user.image),
+            onBackgroundImageError: (error, stackTrace) {},
+          ),
           title: Text(user.fullName),
           subtitle: Text(user.email),
         );
