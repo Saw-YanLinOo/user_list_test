@@ -30,7 +30,7 @@ Feature-first, with one folder per layer.
 
 ```
 lib/
-  main.dart                                  # theme (deep blue) + app start
+  main.dart                                  # theme + app start         
   features/
     home/presentation/home_page.dart         # bottom tabs: Home, Profile
     profile/presentation/profile_page.dart   # empty page
@@ -57,7 +57,7 @@ test/
 Both tests also check that the repository was called exactly once.
 
 Three widget tests use the same fake: the Home tab shows the 5 users, the
-Profile tab is empty, and the app bar and tab bar use the deep blue color.
+Profile tab is empty, and the app bar and the selected tab use the primary color.
 
 ### The fake
 

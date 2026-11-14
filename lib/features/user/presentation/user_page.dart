@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:user_list_test/features/user/application/user_list_controller.dart';
 import 'package:user_list_test/features/user/domain/user.dart';
+import 'package:user_list_test/main.dart';
 
 class UserPage extends ConsumerWidget {
   const UserPage({super.key});
@@ -31,19 +32,40 @@ class _UserList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return ListView.separated(
+      padding: const EdgeInsets.all(16),
       itemCount: users.length,
-      itemBuilder: (context, index) {
-        final user = users[index];
-        return ListTile(
-          leading: CircleAvatar(
-            backgroundImage: NetworkImage(user.image),
-            onBackgroundImageError: (error, stackTrace) {},
-          ),
-          title: Text(user.fullName),
-          subtitle: Text(user.email),
-        );
-      },
+      separatorBuilder: (context, index) => const SizedBox(height: 10),
+      itemBuilder: (context, index) => _UserCard(user: users[index]),
+    );
+  }
+}
+
+class _UserCard extends StatelessWidget {
+  const _UserCard({required this.user});
+
+  final User user;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
+        leading: CircleAvatar(
+          radius: 24,
+          backgroundColor: pageBackgroundColor,
+          backgroundImage: NetworkImage(user.image),
+          onBackgroundImageError: (error, stackTrace) {},
+        ),
+        title: Text(
+          user.fullName,
+          style: const TextStyle(fontWeight: FontWeight.w600),
+        ),
+        subtitle: Text(
+          user.email,
+          style: const TextStyle(color: mutedTextColor),
+        ),
+      ),
     );
   }
 }

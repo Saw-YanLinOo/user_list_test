@@ -39,16 +39,18 @@ void main() {
       expect(find.byType(ListTile), findsNothing);
     });
 
-    testWidgets('app bar and tab bar use the deep blue color', (tester) async {
+    testWidgets('app bar and selected tab use the primary color', (
+      tester,
+    ) async {
       await tester.pumpWidget(makeApp());
       await tester.pumpAndSettle();
 
       final context = tester.element(find.byType(BottomNavigationBar));
       final theme = Theme.of(context);
 
-      expect(theme.colorScheme.primary, deepBlue);
-      expect(theme.appBarTheme.backgroundColor, deepBlue);
-      expect(theme.bottomNavigationBarTheme.backgroundColor, deepBlue);
+      expect(theme.colorScheme.primary, primaryColor);
+      expect(theme.appBarTheme.backgroundColor, primaryColor);
+      expect(theme.bottomNavigationBarTheme.selectedItemColor, primaryColor);
     });
   });
 }
