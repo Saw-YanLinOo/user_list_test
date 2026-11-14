@@ -4,6 +4,8 @@ A Flutter user list built with a feature-first approach and a repository
 layer, tested with Riverpod `AsyncNotifier` and a hand-written fake repository.
 No mock library, no code generation.
 
+<img src="docs/screenshot.png" alt="User list screen" width="300">
+
 ## Features
 
 - Users from `https://dummyjson.com/users`
