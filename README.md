@@ -10,6 +10,16 @@ generation.
 - Loading, error (with retry) and data states
 - Home and Profile tabs
 
+## How the pieces connect
+
+```mermaid
+flowchart LR
+    Page[UserPage] --> Controller[UserListController<br/>AsyncNotifier]
+    Controller --> Repo[UserRepository<br/>abstract]
+    Repo --> Api[ApiUserRepository<br/>app]
+    Repo --> Fake[FakeUserRepository<br/>tests]
+```
+
 ## Structure
 
 ```
