@@ -25,6 +25,11 @@ class MainApp extends StatelessWidget {
           backgroundColor: deepBlue,
           foregroundColor: Colors.white,
         ),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: deepBlue,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white70,
+        ),
       ),
       home: const HomePage(),
     );

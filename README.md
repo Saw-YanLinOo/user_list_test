@@ -57,7 +57,7 @@ test/
 Both tests also check that the repository was called exactly once.
 
 Three widget tests use the same fake: the Home tab shows the 5 users, the
-Profile tab is empty, and the app bar uses the deep blue primary color.
+Profile tab is empty, and the app bar and tab bar use the deep blue color.
 
 ### The fake
 
