@@ -39,9 +39,7 @@ void main() {
       expect(find.byType(ListTile), findsNothing);
     });
 
-    testWidgets('app bar and selected tab use the primary color', (
-      tester,
-    ) async {
+    testWidgets('selected tab uses the primary color', (tester) async {
       await tester.pumpWidget(makeApp());
       await tester.pumpAndSettle();
 
@@ -49,7 +47,7 @@ void main() {
       final theme = Theme.of(context);
 
       expect(theme.colorScheme.primary, primaryColor);
-      expect(theme.appBarTheme.backgroundColor, primaryColor);
+      expect(theme.appBarTheme.backgroundColor, Colors.white);
       expect(theme.bottomNavigationBarTheme.selectedItemColor, primaryColor);
     });
   });

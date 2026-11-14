@@ -4,6 +4,7 @@ import 'package:user_list_test/features/home/presentation/home_page.dart';
 
 const primaryColor = Color(0xFF2952E3);
 const pageBackgroundColor = Color(0xFFF3F6FC);
+const titleTextColor = Color(0xFF111827);
 const mutedTextColor = Color(0xFF6B7280);
 
 void main() {
@@ -24,10 +25,12 @@ class MainApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: pageBackgroundColor,
         appBarTheme: const AppBarTheme(
-          backgroundColor: primaryColor,
-          foregroundColor: Colors.white,
+          backgroundColor: Colors.white,
+          foregroundColor: titleTextColor,
+          elevation: 0,
+          scrolledUnderElevation: 0,
           titleTextStyle: TextStyle(
-            color: Colors.white,
+            color: titleTextColor,
             fontSize: 20,
             fontWeight: FontWeight.w600,
           ),
